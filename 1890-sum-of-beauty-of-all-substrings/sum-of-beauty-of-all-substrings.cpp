@@ -9,16 +9,13 @@ public:
         for(int j = i; j < s.size(); j++) {
             count[s[j] - 'a']++;
 
-            int mx = 0;
+            int mx = *max_element(count.begin(), count.end());
             int mn = INT_MAX;
-
-            for(int k = 0; k < 26; k++) {
-                if(count[k] > 0) {
-                    mx = max(mx, count[k]);
-                    mn = min(mn, count[k]);
+            for(int x:count){
+                if(x>0 && x < mn ){
+                    mn = x;
                 }
             }
-
             ans += mx - mn;
         }
     }
